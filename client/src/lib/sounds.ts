@@ -1,47 +1,38 @@
 import { Howl } from 'howler';
 
+const BASE_PATH = '/sample';
+
 export function playSound(lines: number) {
   if (lines < 1 || lines > 4) return;
 
   try {
-    const extension = lines === 3 ? 'ogg' : 'wav';
-    const soundPath = `/sample/0${lines}.${extension}`;
+    const soundPath = `${BASE_PATH}/0${lines}.wav`;
+    console.log('Loading sound:', soundPath);
     
-    console.log('Attempting to play sound:', soundPath);
-    
-    // Создаем новый экземпляр для каждого воспроизведения
     const sound = new Howl({
       src: [soundPath],
       volume: 0.7,
-      format: [extension],
-      html5: false,
-      preload: false,
+      format: ['wav'],
+      html5: true,
+      preload: true,
       onload: () => {
-        console.log(`Successfully loaded sound from ${soundPath}`);
+        console.log(`Sound ${lines} loaded successfully`);
         sound.play();
       },
       onplay: () => {
-        console.log(`Started playing sound from ${soundPath}`);
-      },
-      onend: () => {
-        console.log(`Finished playing sound from ${soundPath}`);
-        sound.unload(); // Очищаем ресурсы после воспроизведения
+        console.log(`Playing sound ${lines}`);
       },
       onloaderror: (id, err) => {
-        console.error(`Error loading sound ${soundPath}:`, err);
-      },
-      onplayerror: (id, err) => {
-        console.error(`Error playing sound ${soundPath}:`, err);
-        // Попытка воспроизвести ещё раз
-        sound.once('unlock', () => {
-          sound.play();
-        });
+        console.error(`Failed to load sound ${lines}:`, err);
+        // Попытка использовать альтернативный путь
+        const altPath = `/client/public/sample/0${lines}.wav`;
+        console.log('Trying alternative path:', altPath);
+        sound.src = [altPath];
+        sound.load();
       }
     });
 
-    // Начинаем загрузку
     sound.load();
-    
   } catch (error) {
     console.error(`Error in playSound(${lines}):`, error);
   }
