@@ -1,12 +1,25 @@
+// Constants
 export const CELL_SIZE = 30;
 export const BOARD_WIDTH = 10;
 export const BOARD_HEIGHT = 20;
+
+// Types
 export type Board = number[][];
+
 export interface GamePiece {
-    type: number;
-    shape: number[][];
-    pos: { x: number; y: number };
-    rotation: number;
+  type: number;
+  shape: number[][];
+  x: number;
+  y: number;
+  rotation: number;
+}
+
+export interface Piece extends GamePiece {
+  x: number;
+  y: number;
+  shape: number[][];
+  type: number;
+  rotation: number;
 }
 
 import { SHAPES } from './tetrominos';
