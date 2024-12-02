@@ -49,12 +49,12 @@ export default function Game() {
           Japanoise Tetris
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-8 relative">
-          <div className="flex-1">
+        <div className="flex flex-col md:flex-row gap-8 relative">
+          <div className="flex-1 min-w-0">
             <GameCanvas gameState={gameState} />
           </div>
           
-          <div className="w-full lg:w-72 fixed right-4 top-[120px] space-y-6 z-10">
+          <div className="w-full md:w-72 md:sticky md:top-4 space-y-6">
             <div className="bg-[#F5F2ED] bg-opacity-95 backdrop-blur-md border border-primary/10 rounded-lg p-6 space-y-6 shadow-md relative overflow-hidden">
               {/* Декоративный элемент в японском стиле */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">

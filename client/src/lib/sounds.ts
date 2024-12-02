@@ -8,19 +8,17 @@ export function playSound(lines: number) {
   try {
     const key = `lines-${lines}`;
     
-    // If sound is already loaded, use it
     if (sounds[key]) {
       sounds[key].play();
       return;
     }
 
-    // Create a new sound
     const extension = lines === 3 ? 'ogg' : 'wav';
     const sound = new Howl({
       src: [`/sample/0${lines}.${extension}`],
       volume: 0.5,
       preload: true,
-      html5: false,
+      html5: true,
       onload: () => {
         console.log(`Sound for ${lines} lines loaded successfully`);
         sound.play();
