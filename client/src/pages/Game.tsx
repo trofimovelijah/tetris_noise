@@ -81,7 +81,7 @@ export default function Game() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => setGameState(initGame())}
+                onClick={() => setGameState(initGame(gameState.language))}
                 className="w-full bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
               >
                 <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>

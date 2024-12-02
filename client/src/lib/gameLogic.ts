@@ -32,7 +32,7 @@ export interface GameState {
   gameOver: boolean;
 }
 
-export function initGame(): GameState {
+export function initGame(currentLanguage: 'en' | 'ru' = 'ru'): GameState {
   const firstPiece = getRandomPiece();
   const nextPiece = getRandomPiece();
   return {
@@ -42,7 +42,7 @@ export function initGame(): GameState {
     score: 0,
     level: 1,
     lines: 0,
-    language: 'ru',
+    language: currentLanguage,
     soundEnabled: true,
     gameOver: false,
   };

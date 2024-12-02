@@ -3,6 +3,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -32,15 +33,15 @@ export function SettingsDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-background/95 backdrop-blur-sm border-primary/20">
-        <DialogHeader>
-          <DialogTitle>{labels.settings}</DialogTitle>
-          <p className="text-sm text-muted-foreground">
+      <DialogContent className="bg-background border-primary/20 shadow-xl">
+        <DialogHeader className="bg-background text-foreground">
+          <DialogTitle className="text-foreground">{labels.settings}</DialogTitle>
+          <DialogDescription className="text-sm text-muted-foreground">
             {gameState.language === 'en' ? 'Adjust game settings and preferences' : 'Настройте параметры игры'}
-          </p>
+          </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-6">
+        <div className="space-y-6 bg-background text-foreground">
           <div className="flex items-center justify-between">
             <Label htmlFor="sound">{labels.sound}</Label>
             <Switch
