@@ -8,29 +8,29 @@ export function playSound(lines: number) {
   try {
     const key = `lines-${lines}`;
     
-    // Clear previous sound if it exists
+    // Очищаем предыдущий звук
     if (sounds[key]) {
       sounds[key].unload();
       delete sounds[key];
     }
 
-    const extension = lines === 3 ? 'ogg' : 'wav';
-    const soundPath = `/sample/0${lines}.${extension}`;
+    // Используем звуки напрямую из Replit
+    const soundUrl = `https://replit.com/@trofimovelijah/ReactTetrisLite/raw/main/sample/0${lines}.wav`;
     
-    console.log('Loading sound:', soundPath);
+    console.log('Loading sound:', soundUrl);
     
     const sound = new Howl({
-      src: [soundPath],
+      src: [soundUrl],
       volume: 0.5,
       preload: true,
-      html5: false,
-      format: [extension],
+      html5: true,
+      format: ['wav'],
       onload: () => {
-        console.log(`Sound ${lines} loaded successfully from ${soundPath}`);
+        console.log(`Sound ${lines} loaded successfully from ${soundUrl}`);
         sound.play();
       },
       onloaderror: (id, error) => {
-        console.error(`Error loading sound ${lines} from ${soundPath}:`, error);
+        console.error(`Error loading sound ${lines} from ${soundUrl}:`, error);
       },
       onplayerror: (id, error) => {
         console.error(`Error playing sound ${lines}:`, error);
