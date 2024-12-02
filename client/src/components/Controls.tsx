@@ -22,7 +22,7 @@ export function Controls({ gameState, onControl }: ControlsProps) {
           variant="outline"
           size="lg"
           onClick={() => onControl('left')}
-          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
+          className="aspect-square bg-background/50 border-primary/20 hover:bg-primary/5 transition-colors"
         >
           <ArrowLeft className="h-6 w-6 text-primary" />
         </Button>
@@ -30,7 +30,7 @@ export function Controls({ gameState, onControl }: ControlsProps) {
           variant="outline"
           size="lg"
           onClick={() => onControl('down')}
-          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
+          className="aspect-square bg-background/50 border-primary/20 hover:bg-primary/5 transition-colors"
         >
           <ArrowDown className="h-6 w-6 text-primary" />
         </Button>
@@ -38,7 +38,7 @@ export function Controls({ gameState, onControl }: ControlsProps) {
           variant="outline"
           size="lg"
           onClick={() => onControl('right')}
-          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
+          className="aspect-square bg-background/50 border-primary/20 hover:bg-primary/5 transition-colors"
         >
           <ArrowRight className="h-6 w-6 text-primary" />
         </Button>
@@ -49,7 +49,7 @@ export function Controls({ gameState, onControl }: ControlsProps) {
           variant="outline"
           size="lg"
           onClick={() => onControl('rotateLeft')}
-          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
+          className="aspect-square bg-background/50 border-primary/20 hover:bg-primary/5 transition-colors"
         >
           <RotateCcw className="h-6 w-6 text-primary" />
         </Button>
@@ -57,7 +57,7 @@ export function Controls({ gameState, onControl }: ControlsProps) {
           variant="outline"
           size="lg"
           onClick={() => onControl('rotateRight')}
-          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
+          className="aspect-square bg-background/50 border-primary/20 hover:bg-primary/5 transition-colors"
         >
           <RotateCw className="h-6 w-6 text-primary" />
         </Button>
