@@ -6,13 +6,17 @@ function createSound(number: number): Howl {
   const key = `sound-${number}`;
   if (sounds[key]) return sounds[key];
 
+  // Используем полный путь и добавляем обработку ошибок
   const sound = new Howl({
-    src: [`/sample/0${number}.wav`],
+    src: [`/sample/0${number}.wav`, `/sample/0${number}.ogg`], // Пробуем оба формата
     volume: 0.5,
     preload: true,
-    html5: true, // Добавляем эту опцию для лучшей поддержки
+    format: ['wav', 'ogg'],
     onloaderror: (id, error) => {
       console.error(`Error loading sound ${number}:`, error);
+    },
+    onload: () => {
+      console.log(`Sound ${number} loaded successfully`);
     }
   });
 
