@@ -70,6 +70,15 @@ export default function Game() {
                 <Settings className="mr-2" />
                 {gameState.language === 'en' ? 'Settings' : 'Настройки'}
               </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setGameState(initGame())}
+                className="w-full"
+              >
+                {gameState.language === 'en' ? 'New Game' : 'Новая игра'}
+              </Button>
             </div>
             
             <Controls 

@@ -38,7 +38,7 @@ export function initGame(): GameState {
     score: 0,
     level: 1,
     lines: 0,
-    language: 'en',
+    language: 'ru',
     soundEnabled: true,
     gameOver: false,
   };
