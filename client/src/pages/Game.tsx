@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { GameCanvas } from '../components/GameCanvas';
 import { Controls } from '../components/Controls';
 import { ScorePanel } from '../components/ScorePanel';
+import { NextPiece } from '../components/NextPiece';
 import { SettingsDialog } from '../components/SettingsDialog';
 import { useGameLoop } from '../hooks/useGameLoop';
 import { useControls } from '../hooks/useControls';
@@ -48,6 +49,7 @@ export default function Game() {
           </div>
           
           <div className="w-full lg:w-72 space-y-8">
+            <NextPiece gameState={gameState} />
             <ScorePanel gameState={gameState} />
             
             <div className="space-y-4">

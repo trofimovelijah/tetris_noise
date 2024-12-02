@@ -32,7 +32,7 @@ export function SettingsDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="bg-background/95 backdrop-blur-sm border-primary/20">
         <DialogHeader>
           <DialogTitle>{labels.settings}</DialogTitle>
           <p className="text-sm text-muted-foreground">

@@ -23,6 +23,7 @@ export interface Piece {
 export interface GameState {
   board: number[][];
   currentPiece: Piece | null;
+  nextPiece: Piece | null;
   score: number;
   level: number;
   lines: number;
@@ -32,9 +33,12 @@ export interface GameState {
 }
 
 export function initGame(): GameState {
+  const firstPiece = getRandomPiece();
+  const nextPiece = getRandomPiece();
   return {
     board: Array(20).fill(null).map(() => Array(10).fill(0)),
-    currentPiece: getRandomPiece(),
+    currentPiece: firstPiece,
+    nextPiece: nextPiece,
     score: 0,
     level: 1,
     lines: 0,
@@ -132,13 +136,15 @@ export function moveDown(state: GameState): GameState {
   }
 
   const newBoard = mergePiece(state.board, state.currentPiece);
-  const newPiece = getRandomPiece();
-  const gameOver = checkCollision(newBoard, newPiece);
+  const nextPiece = state.nextPiece;
+  const newNextPiece = getRandomPiece();
+  const gameOver = nextPiece ? checkCollision(newBoard, nextPiece) : false;
 
   return clearLines({
     ...state,
     board: newBoard,
-    currentPiece: gameOver ? null : newPiece,
+    currentPiece: gameOver ? null : nextPiece,
+    nextPiece: gameOver ? null : newNextPiece,
     gameOver,
   });
 }

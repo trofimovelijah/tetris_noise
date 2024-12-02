@@ -66,6 +66,10 @@ export function useControls({
       case 'Z':
         handleRotate(-1);
         break;
+      case ' ':
+        event.preventDefault(); // Prevent page scroll
+        setIsPaused(!isPaused);
+        break;
     }
   }, [handleMove, handleRotate]);
 
