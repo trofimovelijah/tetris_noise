@@ -1,11 +1,11 @@
 export const COLORS = [
-  '#687C77', // Sage
-  '#D4C4B7', // Warm Gray
-  '#A4B494', // Moss
-  '#8B6D5C', // Taupe
-  '#C99F92', // Rose Clay
-  '#B7C9C8', // Pale Slate
-  '#9B8579', // Warm Brown
+  '#FF6B6B', // Яркий красный
+  '#4ECDC4', // Бирюзовый
+  '#45B7D1', // Голубой
+  '#96CEB4', // Мятный
+  '#FFEEAD', // Песочный
+  '#D4A5A5', // Пыльная роза
+  '#9FA0C3'  // Лавандовый
 ];
 
 export const SHAPES = [

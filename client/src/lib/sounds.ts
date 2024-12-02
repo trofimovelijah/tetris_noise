@@ -6,9 +6,8 @@ function createSound(number: number): Howl {
   const key = `sound-${number}`;
   if (sounds[key]) return sounds[key];
 
-  // Create a new Howl instance
   const sound = new Howl({
-    src: ['/01.wav'],
+    src: [`/sample/0${number}.wav`],  // Используем разные файлы для разного количества линий
     volume: 0.5,
     preload: true
   });
@@ -21,7 +20,7 @@ export async function playSound(lines: number) {
   if (lines < 1 || lines > 4) return;
   
   try {
-    const sound = createSound(lines);
+    const sound = createSound(lines);  // Создаем звук в зависимости от количества линий
     sound.play();
   } catch (error) {
     console.error('Sound playback failed:', error);

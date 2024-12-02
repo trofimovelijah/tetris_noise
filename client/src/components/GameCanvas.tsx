@@ -51,27 +51,27 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
     ctx.quadraticCurveTo(canvas.width - 100, canvas.height, canvas.width - 200, canvas.height - 50);
     ctx.stroke();
 
-    // Draw board
+    // Draw board with rounded rectangles
     gameState.board.forEach((row: number[], y: number) => {
       row.forEach((value: number, x: number) => {
         if (value) {
-          ctx.fillStyle = COLORS[value - 1];
-          ctx.fillRect(
+          ctx.beginPath();
+          ctx.roundRect(
             x * CELL_SIZE,
             y * CELL_SIZE,
             CELL_SIZE - 1,
-            CELL_SIZE - 1
+            CELL_SIZE - 1,
+            4  // Радиус скругления
           );
+          ctx.fillStyle = COLORS[value - 1];
+          ctx.fill();
         }
       });
     });
 
-    // Draw current piece
+    // Draw current piece with rounded rectangles
     if (gameState.currentPiece) {
       const piece = gameState.currentPiece;
-      ctx.fillStyle = COLORS[piece.type];
-      
-      // Use the rotateShape function from tetrominos.ts
       const rotatedShape = rotateShape(piece.shape, piece.rotation);
       
       rotatedShape.forEach((row: number[], y: number) => {
@@ -79,7 +79,17 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
           if (value) {
             const drawX = (piece.x + x) * CELL_SIZE;
             const drawY = (piece.y + y) * CELL_SIZE;
-            ctx.fillRect(drawX, drawY, CELL_SIZE - 1, CELL_SIZE - 1);
+            
+            ctx.beginPath();
+            ctx.roundRect(
+              drawX,
+              drawY,
+              CELL_SIZE - 1,
+              CELL_SIZE - 1,
+              4  // Радиус скругления
+            );
+            ctx.fillStyle = COLORS[piece.type];
+            ctx.fill();
           }
         });
       });
