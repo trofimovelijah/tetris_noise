@@ -54,7 +54,7 @@ export default function Game() {
             <GameCanvas gameState={gameState} />
           </div>
           
-          <div className="w-full lg:w-72 lg:fixed lg:right-8 lg:top-[120px] space-y-6">
+          <div className="w-full lg:w-72 fixed right-4 top-[120px] space-y-6 z-10">
             <div className="bg-[#F5F2ED] bg-opacity-95 backdrop-blur-md border border-primary/10 rounded-lg p-6 space-y-6 shadow-md relative overflow-hidden">
               {/* Декоративный элемент в японском стиле */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">

@@ -22,7 +22,6 @@ def generate_tone(freq, duration, sample_rate=44100):
     envelope[:attack] = np.linspace(0, 1, attack)
     # Decay
     envelope[attack:attack+decay] = np.linspace(1, sustain_level, decay)
-    # Sustain (already set to sustain_level)
     # Release
     envelope[-release:] = np.linspace(sustain_level, 0, release)
     
@@ -57,8 +56,10 @@ def main():
         tone = generate_tone(frequencies[lines], durations[lines])
         # Normalize to prevent clipping
         tone = tone / np.max(np.abs(tone))
-        # Save as WAV file
-        filename = os.path.join(sample_dir, f'0{lines}.wav')
+        
+        # Save as WAV file for all except line 3, which should be OGG
+        extension = 'ogg' if lines == 3 else 'wav'
+        filename = os.path.join(sample_dir, f'0{lines}.{extension}')
         sf.write(filename, tone, 44100)
         print(f'Generated sound file for {lines} lines: {filename}')
 

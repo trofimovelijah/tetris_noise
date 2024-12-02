@@ -14,9 +14,10 @@ export function playSound(lines: number) {
       return;
     }
 
-    // All sounds will use WAV format for better compatibility
+    // Create a new sound
+    const extension = lines === 3 ? 'ogg' : 'wav';
     const sound = new Howl({
-      src: [`/sample/0${lines}.wav`],
+      src: [`/sample/0${lines}.${extension}`],
       volume: 0.5,
       preload: true,
       html5: false,
@@ -25,7 +26,7 @@ export function playSound(lines: number) {
         sound.play();
       },
       onloaderror: (id, error) => {
-        console.error(`Error loading sound ${lines}:`, error);
+        console.error(`Error loading sound for ${lines} lines:`, error);
       }
     });
 
