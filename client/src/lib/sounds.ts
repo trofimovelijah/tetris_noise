@@ -7,27 +7,24 @@ async function loadSound(number: number): Promise<AudioBuffer> {
   
   // Пробуем загрузить OGG
   try {
-    // Используем относительный путь и убеждаемся, что файлы доступны
-    const response = await fetch(`../sample/0${number}.ogg`);
-    if (response.ok) {
-      const arrayBuffer = await response.arrayBuffer();
-      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-      audioBuffers[key] = audioBuffer;
-      return audioBuffer;
-    }
+    const response = await fetch(`/sample/0${number}.ogg`);
+    if (!response.ok) throw new Error('OGG not found');
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+    audioBuffers[key] = audioBuffer;
+    return audioBuffer;
   } catch (error) {
     console.error('OGG load error:', error);
   }
   
-  // Пробуем WAV
+  // Пробуем WAV если OGG не получился
   try {
-    const response = await fetch(`../sample/0${number}.wav`);
-    if (response.ok) {
-      const arrayBuffer = await response.arrayBuffer();
-      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-      audioBuffers[key] = audioBuffer;
-      return audioBuffer;
-    }
+    const response = await fetch(`/sample/0${number}.wav`);
+    if (!response.ok) throw new Error('WAV not found');
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+    audioBuffers[key] = audioBuffer;
+    return audioBuffer;
   } catch (error) {
     console.error('WAV load error:', error);
   }

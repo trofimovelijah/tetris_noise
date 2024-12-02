@@ -1,0 +1,85 @@
+OGG load error: 
+DOMException {stack: "Error: Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"}
+stack: "Error: Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"
+[[Prototype]]: DOMException
+ABORT_ERR: 20
+DATA_CLONE_ERR: 25
+DOMSTRING_SIZE_ERR: 2
+HIERARCHY_REQUEST_ERR: 3
+INDEX_SIZE_ERR: 1
+INUSE_ATTRIBUTE_ERR: 10
+INVALID_ACCESS_ERR: 15
+INVALID_CHARACTER_ERR: 5
+INVALID_MODIFICATION_ERR: 13
+INVALID_NODE_TYPE_ERR: 24
+INVALID_STATE_ERR: 11
+NAMESPACE_ERR: 14
+NETWORK_ERR: 19
+NOT_FOUND_ERR: 8
+NOT_SUPPORTED_ERR: 9
+NO_DATA_ALLOWED_ERR: 6
+NO_MODIFICATION_ALLOWED_ERR: 7
+QUOTA_EXCEEDED_ERR: 22
+SECURITY_ERR: 18
+SYNTAX_ERR: 12
+TIMEOUT_ERR: 23
+TYPE_MISMATCH_ERR: 17
+URL_MISMATCH_ERR: 21
+VALIDATION_ERR: 16
+WRONG_DOCUMENT_ERR: 4
+code: 0
+get code: ƒ get code()
+message: "Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"
+get message: ƒ get message()
+name: "EncodingError"
+get name: ƒ get name()
+constructor: ƒ DOMException()
+Symbol(Symbol.toStringTag): undefined
+[[Prototype]]: Object
+
+WAV load error: 
+DOMException {stack: "Error: Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"}
+stack: "Error: Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"
+[[Prototype]]: DOMException
+ABORT_ERR: 20
+DATA_CLONE_ERR: 25
+DOMSTRING_SIZE_ERR: 2
+HIERARCHY_REQUEST_ERR: 3
+INDEX_SIZE_ERR: 1
+INUSE_ATTRIBUTE_ERR: 10
+INVALID_ACCESS_ERR: 15
+INVALID_CHARACTER_ERR: 5
+INVALID_MODIFICATION_ERR: 13
+INVALID_NODE_TYPE_ERR: 24
+INVALID_STATE_ERR: 11
+NAMESPACE_ERR: 14
+NETWORK_ERR: 19
+NOT_FOUND_ERR: 8
+NOT_SUPPORTED_ERR: 9
+NO_DATA_ALLOWED_ERR: 6
+NO_MODIFICATION_ALLOWED_ERR: 7
+QUOTA_EXCEEDED_ERR: 22
+SECURITY_ERR: 18
+SYNTAX_ERR: 12
+TIMEOUT_ERR: 23
+TYPE_MISMATCH_ERR: 17
+URL_MISMATCH_ERR: 21
+VALIDATION_ERR: 16
+WRONG_DOCUMENT_ERR: 4
+code: 0
+get code: ƒ get code()
+message: "Failed to execute 'decodeAudioData' on 'BaseAudioContext': Unable to decode audio data"
+get message: ƒ get message()
+name: "EncodingError"
+get name: ƒ get name()
+constructor: ƒ DOMException()
+Symbol(Symbol.toStringTag): undefined
+[[Prototype]]: Object
+
+Sound playback failed: 
+Error {}
+
+at t.value (https://c7b0c0a4-c018-435b-91f9-9678cdf288fa-00-35dvnasxuldfy.sisko.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://c7b0c0a4-c018-435b-91f9-9678cdf288fa-00-35dvnasxuldfy.sisko.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://c7b0c0a4-c018-435b-91f9-9678cdf288fa-00-35dvnasxuldfy.sisko.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://c7b0c0a4-c018-435b-91f9-9678cdf288fa-00-35dvnasxuldfy.sisko.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
