@@ -1,0 +1,52 @@
+> rest-express@1.0.0 dev
+> tsx watch --clear-screen=false server/index.ts
+
+09:02:58 PM [express] serving on port 5000
+
+ ERROR(TypeScript)  No overload matches this call.
+  The last overload gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'number'.
+ FILE  /home/runner/ReactTetrisLite/server/index.ts:72:23
+
+    70 |
+    71 |   // Using the existing server instance instead of creating a new one
+  > 72 |   server.listen(port, "0.0.0.0", () => {
+       |                       ^^^^^^^^^
+    73 |     log(`serving on port ${port}`);
+    74 |   }).on('error', (err: any) => {
+    75 |     if (err.code === 'EADDRINUSE') {
+
+ ERROR(TypeScript)  Operator '+' cannot be applied to types 'string | number' and 'number'.
+ FILE  /home/runner/ReactTetrisLite/server/index.ts:76:43
+
+    74 |   }).on('error', (err: any) => {
+    75 |     if (err.code === 'EADDRINUSE') {
+  > 76 |       log(`Port ${port} is busy, trying ${port + 1}`);
+       |                                           ^^^^^^^^
+    77 |       server.listen(port + 1, "0.0.0.0", () => {
+    78 |         log(`serving on port ${port + 1}`);
+    79 |       });
+
+ ERROR(TypeScript)  Operator '+' cannot be applied to types 'string | number' and 'number'.
+ FILE  /home/runner/ReactTetrisLite/server/index.ts:77:21
+
+    75 |     if (err.code === 'EADDRINUSE') {
+    76 |       log(`Port ${port} is busy, trying ${port + 1}`);
+  > 77 |       server.listen(port + 1, "0.0.0.0", () => {
+       |                     ^^^^^^^^
+    78 |         log(`serving on port ${port + 1}`);
+    79 |       });
+    80 |     } else {
+
+ ERROR(TypeScript)  Operator '+' cannot be applied to types 'string | number' and 'number'.
+ FILE  /home/runner/ReactTetrisLite/server/index.ts:78:32
+
+    76 |       log(`Port ${port} is busy, trying ${port + 1}`);
+    77 |       server.listen(port + 1, "0.0.0.0", () => {
+  > 78 |         log(`serving on port ${port + 1}`);
+       |                                ^^^^^^^^
+    79 |       });
+    80 |     } else {
+    81 |       console.error(err);
+
+[TypeScript] Found 4 errors. Watching for file changes.

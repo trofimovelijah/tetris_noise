@@ -4,21 +4,33 @@ const sounds: { [key: string]: Howl } = {};
 
 export function playSound(lines: number) {
   if (lines < 1 || lines > 4) return;
-  
+
   try {
     const key = `lines-${lines}`;
-    if (!sounds[key]) {
-      // Use OGG format for 3 lines, WAV for others
-      const extension = lines === 3 ? 'ogg' : 'wav';
-      sounds[key] = new Howl({
-        src: [`/sample/0${lines}.${extension}`],
-        volume: 0.5,
-        preload: true
-      });
+    
+    // If sound is already loaded, use it
+    if (sounds[key]) {
+      sounds[key].play();
+      return;
     }
 
-    sounds[key].play();
+    // All sounds will use WAV format for better compatibility
+    const sound = new Howl({
+      src: [`/sample/0${lines}.wav`],
+      volume: 0.5,
+      preload: true,
+      html5: false,
+      onload: () => {
+        console.log(`Sound for ${lines} lines loaded successfully`);
+        sound.play();
+      },
+      onloaderror: (id, error) => {
+        console.error(`Error loading sound ${lines}:`, error);
+      }
+    });
+
+    sounds[key] = sound;
   } catch (error) {
-    console.error(`Failed to play sound for ${lines} lines:`, error);
+    console.error(`Error playing sound for ${lines} lines:`, error);
   }
 }
