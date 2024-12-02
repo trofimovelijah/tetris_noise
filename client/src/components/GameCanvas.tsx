@@ -1,14 +1,12 @@
 import { useRef, useEffect } from "react";
-import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
-import { TETROMINOS } from "../lib/tetrominos";
-import type { Board, GamePiece } from "../lib/gameLogic";
+import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT, type GameState } from "../lib/gameLogic";
+import { COLORS, rotateShape } from "../lib/tetrominos";
 
 interface GameCanvasProps {
-  board: Board;
-  currentPiece: GamePiece;
+  gameState: GameState;
 }
 
-export function GameCanvas({ board, currentPiece }: GameCanvasProps) {
+export function GameCanvas({ gameState }: GameCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -19,14 +17,14 @@ export function GameCanvas({ board, currentPiece }: GameCanvasProps) {
     if (!ctx) return;
 
     // Clear canvas
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "#1a1a1a";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw board
-    board.forEach((row, y) => {
-      row.forEach((cell, x) => {
-        if (cell) {
-          ctx.fillStyle = cell;
+    gameState.board.forEach((row: number[], y: number) => {
+      row.forEach((value: number, x: number) => {
+        if (value) {
+          ctx.fillStyle = COLORS[value - 1];
           ctx.fillRect(
             x * CELL_SIZE,
             y * CELL_SIZE,
@@ -38,26 +36,23 @@ export function GameCanvas({ board, currentPiece }: GameCanvasProps) {
     });
 
     // Draw current piece
-    const piece = TETROMINOS[currentPiece.tetromino];
-    let shape = piece.shape;
-    // Rotate shape based on current rotation
-    for (let i = 0; i < currentPiece.rotation % 4; i++) {
-      shape = shape[0].map((_, index) =>
-        shape.map(row => row[index]).reverse()
-      );
-    }
-
-    shape.forEach((row, y) => {
-      row.forEach((value, x) => {
-        if (value) {
-          const drawX = (currentPiece.pos.x + x) * CELL_SIZE;
-          const drawY = (currentPiece.pos.y + y) * CELL_SIZE;
-          
-          ctx.fillStyle = piece.color;
-          ctx.fillRect(drawX, drawY, CELL_SIZE - 1, CELL_SIZE - 1);
-        }
+    if (gameState.currentPiece) {
+      const piece = gameState.currentPiece;
+      ctx.fillStyle = COLORS[piece.type];
+      
+      // Use the rotateShape function from tetrominos.ts
+      const rotatedShape = rotateShape(piece.shape, piece.rotation);
+      
+      rotatedShape.forEach((row: number[], y: number) => {
+        row.forEach((value: number, x: number) => {
+          if (value) {
+            const drawX = (piece.x + x) * CELL_SIZE;
+            const drawY = (piece.y + y) * CELL_SIZE;
+            ctx.fillRect(drawX, drawY, CELL_SIZE - 1, CELL_SIZE - 1);
+          }
+        });
       });
-    });
+    }
 
     // Draw grid
     ctx.strokeStyle = "#333";
@@ -76,7 +71,7 @@ export function GameCanvas({ board, currentPiece }: GameCanvasProps) {
       ctx.lineTo(BOARD_WIDTH * CELL_SIZE, i * CELL_SIZE);
       ctx.stroke();
     }
-  }, [board, currentPiece]);
+  }, [gameState]);
 
   return (
     <canvas
@@ -84,6 +79,11 @@ export function GameCanvas({ board, currentPiece }: GameCanvasProps) {
       width={BOARD_WIDTH * CELL_SIZE}
       height={BOARD_HEIGHT * CELL_SIZE}
       className="border border-primary shadow-lg rounded-lg"
+      style={{
+        maxHeight: '80vh',
+        width: '100%',
+        objectFit: 'contain',
+      }}
     />
   );
 }

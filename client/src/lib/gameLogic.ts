@@ -1,3 +1,14 @@
+export const CELL_SIZE = 30;
+export const BOARD_WIDTH = 10;
+export const BOARD_HEIGHT = 20;
+export type Board = number[][];
+export interface GamePiece {
+    type: number;
+    shape: number[][];
+    pos: { x: number; y: number };
+    rotation: number;
+}
+
 import { SHAPES } from './tetrominos';
 import { playSound } from './sounds';
 
@@ -6,6 +17,7 @@ export interface Piece {
   y: number;
   shape: number[][];
   type: number;
+  rotation: number;
 }
 
 export interface GameState {
@@ -39,6 +51,7 @@ export function getRandomPiece(): Piece {
     y: 0,
     shape: SHAPES[type],
     type,
+    rotation: 0,
   };
 }
 

@@ -45,10 +45,25 @@ export const SHAPES = [
   ],
 ];
 
-export function rotateMatrix<T>(matrix: T[][]): T[][] {
+export function rotateMatrix(matrix: number[][]): number[][] {
   const N = matrix.length;
-  const result = matrix.map((row, i) =>
-    matrix.map((col) => col[N - 1 - i])
-  );
-  return result;
+  const M = matrix[0].length;
+  const rotated = Array(M).fill(0).map(() => Array(N).fill(0));
+  
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < M; j++) {
+      rotated[j][N - 1 - i] = matrix[i][j];
+    }
+  }
+  
+  return rotated;
 }
+
+// Adjust shapes to ensure proper rotation
+export const rotateShape = (shape: number[][], rotation: number): number[][] => {
+  let rotated = [...shape];
+  for (let i = 0; i < (rotation % 4); i++) {
+    rotated = rotateMatrix(rotated);
+  }
+  return rotated;
+};

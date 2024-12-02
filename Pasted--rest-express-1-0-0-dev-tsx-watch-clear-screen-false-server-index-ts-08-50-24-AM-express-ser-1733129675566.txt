@@ -1,0 +1,190 @@
+> rest-express@1.0.0 dev
+> tsx watch --clear-screen=false server/index.ts
+
+08:50:24 AM [express] serving on port 5000
+
+ ERROR(TypeScript)  Module '"../lib/gameLogic"' has no exported member 'CELL_SIZE'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:2:10
+
+    1 | import { useRef, useEffect } from "react";
+  > 2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+      |          ^^^^^^^^^
+    3 | import { TETROMINOS } from "../lib/tetrominos";
+    4 | import type { Board, GamePiece } from "../lib/gameLogic";
+    5 |
+
+ ERROR(TypeScript)  Module '"../lib/gameLogic"' has no exported member 'BOARD_WIDTH'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:2:21
+
+    1 | import { useRef, useEffect } from "react";
+  > 2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+      |                     ^^^^^^^^^^^
+    3 | import { TETROMINOS } from "../lib/tetrominos";
+    4 | import type { Board, GamePiece } from "../lib/gameLogic";
+    5 |
+
+ ERROR(TypeScript)  Module '"../lib/gameLogic"' has no exported member 'BOARD_HEIGHT'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:2:34
+
+    1 | import { useRef, useEffect } from "react";
+  > 2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+      |                                  ^^^^^^^^^^^^
+    3 | import { TETROMINOS } from "../lib/tetrominos";
+    4 | import type { Board, GamePiece } from "../lib/gameLogic";
+    5 |
+
+ ERROR(TypeScript)  Module '"../lib/tetrominos"' has no exported member 'TETROMINOS'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:3:10
+
+    1 | import { useRef, useEffect } from "react";
+    2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+  > 3 | import { TETROMINOS } from "../lib/tetrominos";
+      |          ^^^^^^^^^^
+    4 | import type { Board, GamePiece } from "../lib/gameLogic";
+    5 |
+    6 | interface GameCanvasProps {
+
+ ERROR(TypeScript)  Module '"../lib/gameLogic"' has no exported member 'Board'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:4:15
+
+    2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+    3 | import { TETROMINOS } from "../lib/tetrominos";
+  > 4 | import type { Board, GamePiece } from "../lib/gameLogic";
+      |               ^^^^^
+    5 |
+    6 | interface GameCanvasProps {
+    7 |   board: Board;
+
+ ERROR(TypeScript)  Module '"../lib/gameLogic"' has no exported member 'GamePiece'.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:4:22
+
+    2 | import { CELL_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from "../lib/gameLogic";
+    3 | import { TETROMINOS } from "../lib/tetrominos";
+  > 4 | import type { Board, GamePiece } from "../lib/gameLogic";
+      |                      ^^^^^^^^^
+    5 |
+    6 | interface GameCanvasProps {
+    7 |   board: Board;
+
+ ERROR(TypeScript)  Parameter 'row' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:26:20
+
+    24 |
+    25 |     // Draw board
+  > 26 |     board.forEach((row, y) => {
+       |                    ^^^
+    27 |       row.forEach((cell, x) => {
+    28 |         if (cell) {
+    29 |           ctx.fillStyle = cell;
+
+ ERROR(TypeScript)  Parameter 'y' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:26:25
+
+    24 |
+    25 |     // Draw board
+  > 26 |     board.forEach((row, y) => {
+       |                         ^
+    27 |       row.forEach((cell, x) => {
+    28 |         if (cell) {
+    29 |           ctx.fillStyle = cell;
+
+ ERROR(TypeScript)  Parameter 'cell' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:27:20
+
+    25 |     // Draw board
+    26 |     board.forEach((row, y) => {
+  > 27 |       row.forEach((cell, x) => {
+       |                    ^^^^
+    28 |         if (cell) {
+    29 |           ctx.fillStyle = cell;
+    30 |           ctx.fillRect(
+
+ ERROR(TypeScript)  Parameter 'x' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:27:26
+
+    25 |     // Draw board
+    26 |     board.forEach((row, y) => {
+  > 27 |       row.forEach((cell, x) => {
+       |                          ^
+    28 |         if (cell) {
+    29 |           ctx.fillStyle = cell;
+    30 |           ctx.fillRect(
+
+ ERROR(TypeScript)  Parameter '_' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:45:29
+
+    43 |     // Rotate shape based on current rotation
+    44 |     for (let i = 0; i < currentPiece.rotation % 4; i++) {
+  > 45 |       shape = shape[0].map((_, index) =>
+       |                             ^
+    46 |         shape.map(row => row[index]).reverse()
+    47 |       );
+    48 |     }
+
+ ERROR(TypeScript)  Parameter 'index' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:45:32
+
+    43 |     // Rotate shape based on current rotation
+    44 |     for (let i = 0; i < currentPiece.rotation % 4; i++) {
+  > 45 |       shape = shape[0].map((_, index) =>
+       |                                ^^^^^
+    46 |         shape.map(row => row[index]).reverse()
+    47 |       );
+    48 |     }
+
+ ERROR(TypeScript)  Parameter 'row' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:46:19
+
+    44 |     for (let i = 0; i < currentPiece.rotation % 4; i++) {
+    45 |       shape = shape[0].map((_, index) =>
+  > 46 |         shape.map(row => row[index]).reverse()
+       |                   ^^^
+    47 |       );
+    48 |     }
+    49 |
+
+ ERROR(TypeScript)  Parameter 'row' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:50:20
+
+    48 |     }
+    49 |
+  > 50 |     shape.forEach((row, y) => {
+       |                    ^^^
+    51 |       row.forEach((value, x) => {
+    52 |         if (value) {
+    53 |           const drawX = (currentPiece.pos.x + x) * CELL_SIZE;
+
+ ERROR(TypeScript)  Parameter 'y' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:50:25
+
+    48 |     }
+    49 |
+  > 50 |     shape.forEach((row, y) => {
+       |                         ^
+    51 |       row.forEach((value, x) => {
+    52 |         if (value) {
+    53 |           const drawX = (currentPiece.pos.x + x) * CELL_SIZE;
+
+ ERROR(TypeScript)  Parameter 'value' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:51:20
+
+    49 |
+    50 |     shape.forEach((row, y) => {
+  > 51 |       row.forEach((value, x) => {
+       |                    ^^^^^
+    52 |         if (value) {
+    53 |           const drawX = (currentPiece.pos.x + x) * CELL_SIZE;
+    54 |           const drawY = (currentPiece.pos.y + y) * CELL_SIZE;
+
+ ERROR(TypeScript)  Parameter 'x' implicitly has an 'any' type.
+ FILE  /home/runner/ReactTetrisLite/client/src/components/GameCanvas.tsx:51:27
+
+    49 |
+    50 |     shape.forEach((row, y) => {
+  > 51 |       row.forEach((value, x) => {
+       |                           ^
+    52 |         if (value) {
+    53 |           const drawX = (currentPiece.pos.x + x) * CELL_SIZE;
+    54 |           const drawY = (currentPiece.pos.y + y) * CELL_SIZE;
+
+[TypeScript] Found 17 errors. Watching for file changes.
