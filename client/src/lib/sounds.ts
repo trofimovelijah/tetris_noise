@@ -5,9 +5,10 @@ async function loadSound(number: number): Promise<AudioBuffer> {
   const key = `sound-${number}`;
   if (audioBuffers[key]) return audioBuffers[key];
   
-  // Сначала пробуем загрузить OGG
+  // Пробуем загрузить OGG
   try {
-    const response = await fetch(`/sample/0${number}.ogg`);
+    // Используем относительный путь и убеждаемся, что файлы доступны
+    const response = await fetch(`../sample/0${number}.ogg`);
     if (response.ok) {
       const arrayBuffer = await response.arrayBuffer();
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
@@ -15,12 +16,12 @@ async function loadSound(number: number): Promise<AudioBuffer> {
       return audioBuffer;
     }
   } catch (error) {
-    console.log('OGG format failed, trying WAV');
+    console.error('OGG load error:', error);
   }
   
-  // Пробуем WAV если OGG не получился
+  // Пробуем WAV
   try {
-    const response = await fetch(`/sample/0${number}.wav`);
+    const response = await fetch(`../sample/0${number}.wav`);
     if (response.ok) {
       const arrayBuffer = await response.arrayBuffer();
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
@@ -28,18 +29,26 @@ async function loadSound(number: number): Promise<AudioBuffer> {
       return audioBuffer;
     }
   } catch (error) {
-    console.log('WAV format failed');
-    throw new Error('Could not load sound in any format');
+    console.error('WAV load error:', error);
   }
   
-  throw new Error('Sound file not found');
+  throw new Error(`Could not load sound ${number} in any format`);
 }
 
 async function playWavSound(buffer: AudioBuffer) {
-  const source = audioContext.createBufferSource();
-  source.buffer = buffer;
-  source.connect(audioContext.destination);
-  source.start();
+  try {
+    // Создаем новый контекст при необходимости
+    if (audioContext.state === 'suspended') {
+      await audioContext.resume();
+    }
+    
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioContext.destination);
+    source.start();
+  } catch (error) {
+    console.error('Error playing sound:', error);
+  }
 }
 
 export async function playSound(lines: number) {
@@ -49,6 +58,6 @@ export async function playSound(lines: number) {
     const buffer = await loadSound(lines);
     await playWavSound(buffer);
   } catch (error) {
-    console.error('Error playing sound:', error);
+    console.error('Sound playback failed:', error);
   }
 }
