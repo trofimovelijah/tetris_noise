@@ -20,11 +20,11 @@ export function playSound(lines: number) {
       preload: true,
       html5: true,
       onload: () => {
-        console.log(`Sound for ${lines} lines loaded successfully`);
+        console.log(`Sound ${lines} loaded from: /sample/0${lines}.${extension}`);
         sound.play();
       },
       onloaderror: (id, error) => {
-        console.error(`Error loading sound for ${lines} lines:`, error);
+        console.error(`Error loading sound ${lines}:`, error);
       }
     });
 

@@ -37,24 +37,35 @@ export default function Game() {
   });
 
   useEffect(() => {
+    const preventScroll = (e: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    
+    window.addEventListener('keydown', preventScroll);
+    return () => window.removeEventListener('keydown', preventScroll);
+  }, []);
+
+  useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
   return (
-    <div className="min-h-screen bg-background p-4 lg:p-8">
-      <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen overflow-hidden bg-background p-4 lg:p-8">
+      <div className="mx-auto max-w-7xl h-full">
         <h1 className="text-4xl font-bold mb-8 text-center tracking-wide" 
             style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
           Japanoise Tetris
         </h1>
 
-        <div className="flex flex-col md:flex-row gap-8 relative">
+        <div className="flex flex-col md:flex-row gap-8 relative h-full">
           <div className="flex-1 min-w-0">
             <GameCanvas gameState={gameState} />
           </div>
           
-          <div className="w-full md:w-72 md:sticky md:top-4 space-y-6">
+          <div className="w-full md:w-72 md:fixed md:right-8 md:top-[120px] space-y-6 z-50">
             <div className="bg-[#F5F2ED] bg-opacity-95 backdrop-blur-md border border-primary/10 rounded-lg p-6 space-y-6 shadow-md relative overflow-hidden">
               {/* Декоративный элемент в японском стиле */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
