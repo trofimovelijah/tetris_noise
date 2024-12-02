@@ -8,28 +8,37 @@ export function playSound(lines: number) {
   try {
     const key = `lines-${lines}`;
     
+    // Clear previous sound if it exists
     if (sounds[key]) {
-      sounds[key].play();
-      return;
+      sounds[key].unload();
+      delete sounds[key];
     }
 
     const extension = lines === 3 ? 'ogg' : 'wav';
+    const soundPath = `/sample/0${lines}.${extension}`;
+    
+    console.log('Loading sound:', soundPath);
+    
     const sound = new Howl({
-      src: [`/sample/0${lines}.${extension}`],
+      src: [soundPath],
       volume: 0.5,
       preload: true,
-      html5: true,
+      html5: false,
+      format: [extension],
       onload: () => {
-        console.log(`Sound ${lines} loaded from: /sample/0${lines}.${extension}`);
+        console.log(`Sound ${lines} loaded successfully from ${soundPath}`);
         sound.play();
       },
       onloaderror: (id, error) => {
-        console.error(`Error loading sound ${lines}:`, error);
+        console.error(`Error loading sound ${lines} from ${soundPath}:`, error);
+      },
+      onplayerror: (id, error) => {
+        console.error(`Error playing sound ${lines}:`, error);
       }
     });
 
     sounds[key] = sound;
   } catch (error) {
-    console.error(`Error playing sound for ${lines} lines:`, error);
+    console.error(`Error in playSound(${lines}):`, error);
   }
 }

@@ -65,8 +65,8 @@ export default function Game() {
             <GameCanvas gameState={gameState} />
           </div>
           
-          <div className="w-full md:w-72 md:fixed md:right-8 md:top-[120px] space-y-6 z-50">
-            <div className="bg-[#F5F2ED] bg-opacity-95 backdrop-blur-md border border-primary/10 rounded-lg p-6 space-y-6 shadow-md relative overflow-hidden">
+          <div className="w-full md:w-80 md:sticky md:top-4 space-y-4">
+            <div className="bg-[#F5F2ED] bg-opacity-95 backdrop-blur-md border border-primary/10 rounded-lg p-4 space-y-4 shadow-md">
               {/* Декоративный элемент в японском стиле */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full">
