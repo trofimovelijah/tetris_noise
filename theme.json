@@ -1,6 +1,6 @@
 {
   "appearance": "light",
-  "radius": "0.25rem",
+  "radius": 0.25,
   "variant": "professional",
   "primary": "hsl(170, 15%, 35%)",
   "primary-foreground": "hsl(0, 0%, 98%)",

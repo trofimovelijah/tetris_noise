@@ -3,18 +3,18 @@ import { GameCanvas } from '../components/GameCanvas';
 import { Controls } from '../components/Controls';
 import { ScorePanel } from '../components/ScorePanel';
 import { NextPiece } from '../components/NextPiece';
-import { SettingsDialog } from '../components/SettingsDialog';
 import { useGameLoop } from '../hooks/useGameLoop';
 import { useControls } from '../hooks/useControls';
 import { initGame } from '../lib/gameLogic';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { Pause, Play, Settings } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 
 export default function Game() {
   const [gameState, setGameState] = useState(initGame());
   const [isPaused, setIsPaused] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { toast } = useToast();
 
   const { handleKeyDown, handleTouchControls } = useControls({
@@ -54,6 +54,37 @@ export default function Game() {
             <ScorePanel gameState={gameState} />
             
             <div className="space-y-4">
+              {/* Language Settings */}
+              <div className="flex items-center justify-between p-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg">
+                <span className="text-sm font-medium" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
+                  {gameState.language === 'en' ? 'Language' : 'Язык'}
+                </span>
+                <Select
+                  value={gameState.language}
+                  onValueChange={(value) => setGameState({ ...gameState, language: value as 'en' | 'ru' })}
+                >
+                  <SelectTrigger className="w-[100px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="en">English</SelectItem>
+                    <SelectItem value="ru">Русский</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Sound Settings */}
+              <div className="flex items-center justify-between p-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg">
+                <span className="text-sm font-medium" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
+                  {gameState.language === 'en' ? 'Sound' : 'Звук'}
+                </span>
+                <Switch
+                  checked={gameState.soundEnabled}
+                  onCheckedChange={(checked) => setGameState({ ...gameState, soundEnabled: checked })}
+                />
+              </div>
+
+              {/* Game Controls */}
               <Button
                 variant="outline"
                 size="lg"
@@ -63,18 +94,6 @@ export default function Game() {
                 {isPaused ? <Play className="mr-2 h-5 w-5" /> : <Pause className="mr-2 h-5 w-5" />}
                 <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
                   {gameState.language === 'en' ? 'Pause' : 'Пауза'}
-                </span>
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => setIsSettingsOpen(true)}
-                className="w-full bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
-              >
-                <Settings className="mr-2 h-5 w-5" />
-                <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
-                  {gameState.language === 'en' ? 'Settings' : 'Настройки'}
                 </span>
               </Button>
 
@@ -97,13 +116,6 @@ export default function Game() {
           </div>
         </div>
       </div>
-
-      <SettingsDialog
-        open={isSettingsOpen}
-        onOpenChange={setIsSettingsOpen}
-        gameState={gameState}
-        setGameState={setGameState}
-      />
     </div>
   );
 }
