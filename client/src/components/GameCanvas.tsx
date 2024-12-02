@@ -16,19 +16,40 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Clear canvas and draw textured background
-    ctx.fillStyle = "hsl(40, 20%, 95%)";
+    // Clear canvas and draw background landscape
+    ctx.fillStyle = "#FFF1E6";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Add subtle texture pattern
-    ctx.fillStyle = "hsla(40, 20%, 90%, 0.5)";
-    for (let i = 0; i < canvas.width; i += 10) {
-      for (let j = 0; j < canvas.height; j += 10) {
-        if ((i + j) % 20 === 0) {
-          ctx.fillRect(i, j, 2, 2);
-        }
-      }
-    }
+
+    // Red sun
+    ctx.fillStyle = "rgba(225, 85, 85, 0.15)";
+    ctx.beginPath();
+    ctx.arc(canvas.width * 0.8, canvas.height * 0.2, 40, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mountains in the background
+    ctx.fillStyle = "rgba(100, 116, 139, 0.1)";
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height * 0.7);
+    ctx.lineTo(canvas.width * 0.3, canvas.height * 0.4);
+    ctx.lineTo(canvas.width * 0.5, canvas.height * 0.6);
+    ctx.lineTo(canvas.width * 0.7, canvas.height * 0.3);
+    ctx.lineTo(canvas.width, canvas.height * 0.5);
+    ctx.lineTo(canvas.width, canvas.height);
+    ctx.lineTo(0, canvas.height);
+    ctx.fill();
+
+    // Decorative branches
+    ctx.strokeStyle = "rgba(100, 116, 139, 0.1)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, 50);
+    ctx.quadraticCurveTo(100, 0, 200, 50);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(canvas.width, canvas.height - 50);
+    ctx.quadraticCurveTo(canvas.width - 100, canvas.height, canvas.width - 200, canvas.height - 50);
+    ctx.stroke();
 
     // Draw board
     gameState.board.forEach((row: number[], y: number) => {

@@ -1,15 +1,14 @@
 {
   "appearance": "light",
-  "radius": 0.25,
-  "variant": "professional",
-  "primary": "hsl(170, 15%, 35%)",
+  "radius": "0.25rem",
+  "primary": "hsl(350, 50%, 45%)",
   "primary-foreground": "hsl(0, 0%, 98%)",
-  "background": "hsl(40, 20%, 95%)",
-  "foreground": "hsl(170, 15%, 15%)",
-  "muted": "hsl(170, 10%, 90%)",
-  "muted-foreground": "hsl(170, 15%, 35%)",
-  "accent": "hsl(0, 60%, 45%)",
+  "background": "hsl(30, 50%, 97%)",
+  "foreground": "hsl(350, 30%, 20%)",
+  "muted": "hsl(30, 30%, 95%)",
+  "muted-foreground": "hsl(350, 30%, 35%)",
+  "accent": "hsl(350, 50%, 45%)",
   "accent-foreground": "hsl(0, 0%, 98%)",
-  "border": "hsl(170, 15%, 35%)",
-  "ring": "hsl(170, 15%, 35%)"
+  "border": "hsl(350, 30%, 35%)",
+  "ring": "hsl(350, 30%, 35%)"
 }
