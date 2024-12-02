@@ -21,6 +21,7 @@ export default function Game() {
     gameState,
     setGameState,
     isPaused,
+    setIsPaused,
   });
 
   useGameLoop({

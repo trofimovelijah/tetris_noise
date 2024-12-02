@@ -6,12 +6,14 @@ interface UseControlsProps {
   gameState: GameState;
   setGameState: (state: GameState) => void;
   isPaused: boolean;
+  setIsPaused: (paused: boolean) => void;
 }
 
 export function useControls({
   gameState,
   setGameState,
   isPaused,
+  setIsPaused,
 }: UseControlsProps) {
   const handleMove = useCallback((offsetX: number, offsetY: number) => {
     if (isPaused || !gameState.currentPiece || gameState.gameOver) return;
@@ -71,7 +73,7 @@ export function useControls({
         setIsPaused(!isPaused);
         break;
     }
-  }, [handleMove, handleRotate]);
+  }, [handleMove, handleRotate, isPaused, setIsPaused]);
 
   const handleTouchControls = useCallback((action: string) => {
     switch (action) {

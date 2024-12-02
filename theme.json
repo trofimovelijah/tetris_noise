@@ -1,5 +1,5 @@
 {
-  "variant": "light",
+  "appearance": "light",
   "radius": "0.25rem",
   "primary": "hsl(170, 15%, 35%)",
   "primary-foreground": "hsl(0, 0%, 98%)",
@@ -10,6 +10,5 @@
   "accent": "hsl(0, 60%, 45%)",
   "accent-foreground": "hsl(0, 0%, 98%)",
   "border": "hsl(170, 15%, 35%)",
-  "ring": "hsl(170, 15%, 35%)",
-  "appearance": "light"
+  "ring": "hsl(170, 15%, 35%)"
 }
