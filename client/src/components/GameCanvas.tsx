@@ -86,7 +86,7 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
     }
 
     // Draw grid with thinner lines
-    ctx.strokeStyle = "hsla(170, 15%, 35%, 0.2)";
+    ctx.strokeStyle = "hsla(170, 15%, 35%, 0.1)";
     ctx.lineWidth = 0.25;
 
     for (let i = 0; i <= BOARD_WIDTH; i++) {
@@ -109,7 +109,7 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
       ref={canvasRef}
       width={BOARD_WIDTH * CELL_SIZE}
       height={BOARD_HEIGHT * CELL_SIZE}
-      className="border border-primary shadow-lg rounded-lg"
+      className="border border-primary/10 shadow-lg rounded-2xl"
       style={{
         maxHeight: '80vh',
         width: '100%',

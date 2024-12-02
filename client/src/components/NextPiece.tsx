@@ -10,7 +10,7 @@ export function NextPiece({ gameState }: NextPieceProps) {
   if (!nextPiece) return null;
 
   return (
-    <div className="p-4 bg-background/50 backdrop-blur-sm border border-primary/20 rounded-lg">
+    <div className="p-4 bg-background/50 backdrop-blur-sm border border-primary/10 rounded-2xl">
       <h3 className="text-sm font-medium mb-2" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
         {gameState.language === 'en' ? 'Next' : 'Следующая'}
       </h3>

@@ -13,7 +13,7 @@ export function ScorePanel({ gameState }: ScorePanelProps) {
   };
 
   return (
-    <Card className="p-6 space-y-6 bg-background/50 backdrop-blur-sm border-primary/20 shadow-lg">
+    <Card className="p-6 space-y-6 bg-background/50 backdrop-blur-sm border border-primary/10 rounded-2xl shadow-lg">
       <div className="relative space-y-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-px after:bg-primary/10">
         <h3 className="text-lg font-medium tracking-wide" style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
           {labels.score}

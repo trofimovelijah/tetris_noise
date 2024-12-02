@@ -46,7 +46,7 @@ export default function Game() {
       <div className="mx-auto max-w-7xl">
         <h1 className="text-4xl font-bold mb-8 text-center tracking-wide" 
             style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
-          JapanoiseT
+          Japanoise Tetris
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-8">
