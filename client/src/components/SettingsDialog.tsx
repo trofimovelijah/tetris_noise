@@ -35,6 +35,9 @@ export function SettingsDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{labels.settings}</DialogTitle>
+          <p className="text-sm text-muted-foreground">
+            {gameState.language === 'en' ? 'Adjust game settings and preferences' : 'Настройте параметры игры'}
+          </p>
         </DialogHeader>
 
         <div className="space-y-6">
