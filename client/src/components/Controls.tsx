@@ -16,50 +16,50 @@ export function Controls({ gameState, onControl }: ControlsProps) {
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-3 gap-2">
+    <div className="space-y-6">
+      <div className="grid grid-cols-3 gap-3">
         <Button
-          variant="secondary"
+          variant="outline"
           size="lg"
           onClick={() => onControl('left')}
-          className="aspect-square"
+          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
         >
-          <ArrowLeft className="h-6 w-6" />
+          <ArrowLeft className="h-6 w-6 text-primary" />
         </Button>
         <Button
-          variant="secondary"
+          variant="outline"
           size="lg"
           onClick={() => onControl('down')}
-          className="aspect-square"
+          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
         >
-          <ArrowDown className="h-6 w-6" />
+          <ArrowDown className="h-6 w-6 text-primary" />
         </Button>
         <Button
-          variant="secondary"
+          variant="outline"
           size="lg"
           onClick={() => onControl('right')}
-          className="aspect-square"
+          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
         >
-          <ArrowRight className="h-6 w-6" />
+          <ArrowRight className="h-6 w-6 text-primary" />
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-3">
         <Button
-          variant="secondary"
+          variant="outline"
           size="lg"
           onClick={() => onControl('rotateLeft')}
-          className="aspect-square"
+          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
         >
-          <RotateCcw className="h-6 w-6" />
+          <RotateCcw className="h-6 w-6 text-primary" />
         </Button>
         <Button
-          variant="secondary"
+          variant="outline"
           size="lg"
           onClick={() => onControl('rotateRight')}
-          className="aspect-square"
+          className="aspect-square bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
         >
-          <RotateCw className="h-6 w-6" />
+          <RotateCw className="h-6 w-6 text-primary" />
         </Button>
       </div>
     </div>

@@ -1,11 +1,11 @@
 export const COLORS = [
-  '#FF0D0D', // Red
-  '#0DFF0D', // Green
-  '#0D0DFF', // Blue
-  '#FFFF0D', // Yellow
-  '#FF0DFF', // Magenta
-  '#0DFFFF', // Cyan
-  '#FF8C0D', // Orange
+  '#687C77', // Sage
+  '#D4C4B7', // Warm Gray
+  '#A4B494', // Moss
+  '#8B6D5C', // Taupe
+  '#C99F92', // Rose Clay
+  '#B7C9C8', // Pale Slate
+  '#9B8579', // Warm Brown
 ];
 
 export const SHAPES = [

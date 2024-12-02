@@ -16,9 +16,19 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Clear canvas
-    ctx.fillStyle = "#1a1a1a";
+    // Clear canvas and draw textured background
+    ctx.fillStyle = "hsl(40, 20%, 95%)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Add subtle texture pattern
+    ctx.fillStyle = "hsla(40, 20%, 90%, 0.5)";
+    for (let i = 0; i < canvas.width; i += 10) {
+      for (let j = 0; j < canvas.height; j += 10) {
+        if ((i + j) % 20 === 0) {
+          ctx.fillRect(i, j, 2, 2);
+        }
+      }
+    }
 
     // Draw board
     gameState.board.forEach((row: number[], y: number) => {
@@ -54,9 +64,9 @@ export function GameCanvas({ gameState }: GameCanvasProps) {
       });
     }
 
-    // Draw grid
-    ctx.strokeStyle = "#333";
-    ctx.lineWidth = 0.5;
+    // Draw grid with thinner lines
+    ctx.strokeStyle = "hsla(170, 15%, 35%, 0.2)";
+    ctx.lineWidth = 0.25;
 
     for (let i = 0; i <= BOARD_WIDTH; i++) {
       ctx.beginPath();

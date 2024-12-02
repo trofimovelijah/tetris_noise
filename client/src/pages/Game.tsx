@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GameBoard } from '../components/GameBoard';
+import { GameCanvas } from '../components/GameCanvas';
 import { Controls } from '../components/Controls';
 import { ScorePanel } from '../components/ScorePanel';
 import { SettingsDialog } from '../components/SettingsDialog';
@@ -40,44 +40,50 @@ export default function Game() {
   }, [handleKeyDown]);
 
   return (
-    <div className="min-h-screen bg-background p-4 lg:p-8">
+    <div className="min-h-screen bg-background p-4 lg:p-8 bg-[url('/images/japandi-pattern.svg')] bg-repeat bg-opacity-5">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
-            <GameBoard gameState={gameState} />
+            <GameCanvas gameState={gameState} />
           </div>
           
-          <div className="w-full lg:w-64 space-y-6">
+          <div className="w-full lg:w-72 space-y-8">
             <ScorePanel gameState={gameState} />
             
-            <div className="flex flex-col gap-4">
+            <div className="space-y-4">
               <Button
                 variant="outline"
                 size="lg"
                 onClick={() => setIsPaused(!isPaused)}
-                className="w-full"
+                className="w-full bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
               >
-                {isPaused ? <Play className="mr-2" /> : <Pause className="mr-2" />}
-                {gameState.language === 'en' ? 'Pause' : 'Пауза'}
+                {isPaused ? <Play className="mr-2 h-5 w-5" /> : <Pause className="mr-2 h-5 w-5" />}
+                <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
+                  {gameState.language === 'en' ? 'Pause' : 'Пауза'}
+                </span>
               </Button>
               
               <Button
                 variant="outline"
                 size="lg"
                 onClick={() => setIsSettingsOpen(true)}
-                className="w-full"
+                className="w-full bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
               >
-                <Settings className="mr-2" />
-                {gameState.language === 'en' ? 'Settings' : 'Настройки'}
+                <Settings className="mr-2 h-5 w-5" />
+                <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
+                  {gameState.language === 'en' ? 'Settings' : 'Настройки'}
+                </span>
               </Button>
 
               <Button
                 variant="outline"
                 size="lg"
                 onClick={() => setGameState(initGame())}
-                className="w-full"
+                className="w-full bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-primary/10 transition-colors"
               >
-                {gameState.language === 'en' ? 'New Game' : 'Новая игра'}
+                <span style={{ fontFamily: "'Noto Sans JP', sans-serif" }}>
+                  {gameState.language === 'en' ? 'New Game' : 'Новая игра'}
+                </span>
               </Button>
             </div>
             
