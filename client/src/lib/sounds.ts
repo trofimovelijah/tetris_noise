@@ -1,53 +1,43 @@
 import { Howl } from 'howler';
 
-const SOUND_PATHS = {
-  1: '/sample/01.wav',
-  2: '/sample/02.wav',
-  3: '/sample/03.wav',
-  4: '/sample/04.wav'
-};
-
-let currentSound: Howl | null = null;
+// Используем абсолютные пути от корня public
+const BASE_URL = window.location.origin;
 
 export function playSound(lines: number) {
   if (lines < 1 || lines > 4) return;
 
   try {
-    // Остановить предыдущий звук, если он воспроизводится
-    if (currentSound) {
-      currentSound.stop();
-      currentSound.unload();
-    }
-
-    const soundPath = SOUND_PATHS[lines as keyof typeof SOUND_PATHS];
-    console.log('Loading sound:', soundPath);
+    const extension = lines === 3 ? 'ogg' : 'wav';
+    const soundPath = `${BASE_URL}/sample/0${lines}.${extension}`;
     
-    currentSound = new Howl({
+    console.log('Attempting to play sound:', soundPath);
+    
+    const sound = new Howl({
       src: [soundPath],
       volume: 0.7,
-      format: ['wav'],
-      html5: true,
+      format: [extension],
+      html5: false,
       preload: true,
-      pool: 1,
       onload: () => {
         console.log(`Sound ${lines} loaded successfully from ${soundPath}`);
-        currentSound?.play();
-      },
-      onplay: () => {
-        console.log(`Playing sound ${lines}`);
-      },
-      onend: () => {
-        console.log(`Finished playing sound ${lines}`);
-        if (currentSound) {
-          currentSound.unload();
-          currentSound = null;
-        }
+        sound.play();
       },
       onloaderror: (id, err) => {
-        console.error(`Error loading sound ${lines} from ${soundPath}:`, err);
-      },
-      onplayerror: (id, err) => {
-        console.error(`Error playing sound ${lines}:`, err);
+        console.error(`Failed to load sound ${lines}:`, err);
+        // Попробуем альтернативный путь
+        const altPath = `/sample/0${lines}.${extension}`;
+        console.log('Trying alternative path:', altPath);
+        const altSound = new Howl({
+          src: [altPath],
+          volume: 0.7,
+          format: [extension],
+          html5: false,
+          preload: true,
+          onload: () => {
+            console.log(`Sound ${lines} loaded successfully from alternative path`);
+            altSound.play();
+          }
+        });
       }
     });
   } catch (error) {
