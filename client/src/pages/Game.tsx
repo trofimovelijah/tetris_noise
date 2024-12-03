@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { GameCanvas } from '../components/GameCanvas';
-import { Controls } from '../components/Controls';
+
 import { ScorePanel } from '../components/ScorePanel';
 import { NextPiece } from '../components/NextPiece';
 import { useGameLoop } from '../hooks/useGameLoop';
@@ -136,10 +136,7 @@ export default function Game() {
                 </Button>
               </div>
 
-              <Controls 
-                gameState={gameState}
-                onControl={handleTouchControls}
-              />
+              
             </div>
           </div>
         </div>
